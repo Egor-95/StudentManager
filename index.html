@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Панель управления студентами</title>
+</head>
+<body>
+    <h1>Добавить студента</h1>
+
+    <form id="studentForm" novalidate>
+        <div class="form-row">
+            <label for="firstName">Имя:</label>
+            <input type="text" id="firstName" required>
+            <div class="error" id="firstNameError"></div>
+        </div>
+
+        <div class="form-row">
+            <label for="lastName">Фамилия:</label>
+            <input type="text" id="lastName" required>
+            <div class="error" id="lastNameError"></div>
+        </div>
+
+        <div class="form-row">
+            <label for="patronymic">Отчество:</label>
+            <input type="text" id="patronymic" required>
+            <div class="error" id="patronymicError"></div>
+        </div>
+
+        <div class="form-row">
+            <label for="birthdate">Дата рождения:</label>
+            <input type="date" id="birthdate" required>
+            <div class="error" id="birthdateError"></div>
+        </div>
+
+        <div class="form-row">
+            <label for="startYear">Год начала обучения:</label>
+            <input type="number" id="startYear" min="2000" max="2023" required>
+            <div class="error" id="startYearError"></div>
+        </div>
+
+        <div class="form-row">
+            <label for="faculty">Факультет:</label>
+            <input type="text" id="faculty" required>
+            <div class="error" id="facultyError"></div>
+        </div>
+
+        <button type="submit">Добавить студента</button>
+    </form>
+    <div>
+        <h2>Фильтры для таблицы</h2>
+        <label for="nameFilter">Поиск по Ф. И. О.:</label>
+        <input type="text" id="nameFilter" oninput="applyFilters()">
+
+        <label for="facultyFilter">Поиск по факультету:</label>
+        <input type="text" id="facultyFilter" oninput="applyFilters()">
+
+        <label for="startYearFilter">Год начала обучения:</label>
+        <input type="number" id="startYearFilter" min="2000" max="2023" oninput="applyFilters()">
+
+        <label for="endYearFilter">Год окончания обучения:</label>
+        <input type="number" id="endYearFilter" min="2000" max="2023" oninput="applyFilters()">
+    </div>
+
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th onclick="sortTableByColumn('fullName')" data-sort="fullName">Ф. И. О.</th>
+                <th onclick="sortTableByColumn('faculty')" data-sort="faculty">Факультет</th>
+                <th onclick="sortTableByColumn('birthdate')" data-sort="birthdate">Дата рождения и возраст</th>
+                <th onclick="sortTableByColumn('startYear')" data-sort="startYear">Годы обучения</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
